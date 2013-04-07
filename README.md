@@ -27,7 +27,7 @@ Want to contribute? Great! Improve the script and share your changes.
 How to run 
 -----------
 
-    ./vzdumpfixed
+    ./fixvzdump
 
 then use vzdumpfixed instead of vzdump
 
