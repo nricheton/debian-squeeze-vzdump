@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ ! -f  /usr/sbin/vzdumpfixed  ]; then
+      cat /usr/share/perl5/PVE/VZDump.pm  | sed -e s/VZDump/VZDumpFixed/ > /usr/share/perl5/PVE/VZDumpFixed.pm
+      mkdir /usr/share/perl5/PVE/VZDumpFixed
+      cat  /usr/share/perl5/PVE/VZDump/Plugin.pm  | sed s/VZDump/VZDumpFixed/  > /usr/share/perl5/PVE/VZDumpFixed/Plugin.pm
+      cat /usr/share/perl5/PVE/VZDump/OpenVZ.pm  | sed s/VZDump/VZDumpFixed/ | sed s/--remove-files// > /usr/share/perl5/PVE/VZDumpFixed/OpenVZ.pm 
+      cat /usr/sbin/vzdump  | sed -e s/VZDump/VZDumpFixed/  > /usr/sbin/vzdumpfixed
+      chmod u+x /usr/sbin/vzdumpfixed 
+fi
